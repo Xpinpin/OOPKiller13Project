@@ -24,10 +24,6 @@ namespace Cards
         private Hand previousHand;
 
         private Card threeSpadesCard = new Card(Suit.Spades, FaceValue.Three);
-        private Card twoSpades = new Card(Suit.Spades, FaceValue.Two);
-        private Card twoClubs = new Card(Suit.Clubs, FaceValue.Two);
-        private Card twoDiamonds = new Card(Suit.Diamonds, FaceValue.Two);
-        private Card twoHearts = new Card(Suit.Hearts, FaceValue.Two);
 
         int value;
         int oldValue;
