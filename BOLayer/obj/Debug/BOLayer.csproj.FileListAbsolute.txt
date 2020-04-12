@@ -1,0 +1,12 @@
+D:\Winter 2020\OOP\Demo\OOPProjectDemo5\BOLayer\bin\Debug\BOLayer.dll
+D:\Winter 2020\OOP\Demo\OOPProjectDemo5\BOLayer\bin\Debug\BOLayer.pdb
+D:\Winter 2020\OOP\Demo\OOPProjectDemo5\BOLayer\obj\Debug\BOLayer.csprojAssemblyReference.cache
+D:\Winter 2020\OOP\Demo\OOPProjectDemo5\BOLayer\obj\Debug\BOLayer.csproj.CoreCompileInputs.cache
+D:\Winter 2020\OOP\Demo\OOPProjectDemo5\BOLayer\obj\Debug\BOLayer.dll
+D:\Winter 2020\OOP\Demo\OOPProjectDemo5\BOLayer\obj\Debug\BOLayer.pdb
+D:\Winter 2020\OOP\Assigns and Tests\OOPCardGameProject\BOLayer\bin\Debug\BOLayer.dll
+D:\Winter 2020\OOP\Assigns and Tests\OOPCardGameProject\BOLayer\bin\Debug\BOLayer.pdb
+D:\Winter 2020\OOP\Assigns and Tests\OOPCardGameProject\BOLayer\obj\Debug\BOLayer.csprojAssemblyReference.cache
+D:\Winter 2020\OOP\Assigns and Tests\OOPCardGameProject\BOLayer\obj\Debug\BOLayer.csproj.CoreCompileInputs.cache
+D:\Winter 2020\OOP\Assigns and Tests\OOPCardGameProject\BOLayer\obj\Debug\BOLayer.dll
+D:\Winter 2020\OOP\Assigns and Tests\OOPCardGameProject\BOLayer\obj\Debug\BOLayer.pdb
