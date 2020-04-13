@@ -69,6 +69,8 @@ namespace Cards
 
                 value = 0;
                 oldValue = 0;
+                
+                ranking = "";
 
                 lblInstruct.Text = "Click New Game to proceed into the game for four people.\r\n" +
                                    "Follow the instructions here carefully to experience\r\n" +
