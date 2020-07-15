@@ -1,6 +1,7 @@
 # OOPKiller13Project
 
 (VIETNAMESE BELOW)
+
 Please read the Game Proposal if you have not known how to play Killer 13 yet.
 
 This is the Killer 13 Card game designed by me on the .Net Core platform (C# Window Form). Although it has not beed thoroughly perfect and I know it is not that special in any means, but I hope you will enjoy playing this game. I have designed it to be able to play on 1 computer and 4 people at a time.
