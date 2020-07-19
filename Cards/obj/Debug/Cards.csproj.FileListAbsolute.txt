@@ -192,8 +192,6 @@ D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\images\T
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Cards.exe.config
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Cards.exe
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Cards.pdb
-D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\BOLayer.dll
-D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\BOLayer.pdb
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.csprojAssemblyReference.cache
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.Form1.resources
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.Properties.Resources.resources
@@ -202,3 +200,10 @@ D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.cs
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.csproj.CopyComplete
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.exe
 D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.pdb
+D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Cards.exe.manifest
+D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Cards.application
+D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Killer 13.dll
+D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Killer 13.pdb
+D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\bin\Debug\Killer 13.dll.config
+D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.exe.manifest
+D:\Winter 2020\OOP\Assigns and Tests\OOPKiller13Project\Cards\obj\Debug\Cards.application
