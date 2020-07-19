@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using BOLayer;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BOLayer;
 
 namespace Cards
 {
@@ -24,10 +18,6 @@ namespace Cards
         private Hand previousHand;
 
         private Card threeSpadesCard = new Card(Suit.Spades, FaceValue.Three);
-        private Card twoSpades = new Card(Suit.Spades, FaceValue.Two);
-        private Card twoClubs = new Card(Suit.Clubs, FaceValue.Two);
-        private Card twoDiamonds = new Card(Suit.Diamonds, FaceValue.Two);
-        private Card twoHearts = new Card(Suit.Hearts, FaceValue.Two);
 
         int value;
         int oldValue;
@@ -73,6 +63,8 @@ namespace Cards
 
                 value = 0;
                 oldValue = 0;
+
+                ranking = "";
 
                 lblInstruct.Text = "Click New Game to proceed into the game for four people.\r\n" +
                                    "Follow the instructions here carefully to experience\r\n" +
@@ -143,7 +135,7 @@ namespace Cards
         /// </summary>
         private void StartAgainAfterWinning()
         {
-            MessageBox.Show("You have to start a new turn.","Error!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("You have to start a new turn.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             oldValue = 0;
             PreviousDraw.Controls.Clear();
             previousHand = new Hand();
@@ -167,7 +159,7 @@ namespace Cards
         private bool FinishedPlayer(Label playerLabel)
         {
             return playerLabel.ForeColor == Color.Green;
-            
+
         }
 
         /// <summary>
@@ -242,11 +234,11 @@ namespace Cards
         {
             return (lblOne.ForeColor == Color.Green && lblTwo.ForeColor == Color.Green && lblThree.ForeColor == Color.Green);
         }
-        
-    /// <summary>
-    /// This is used to end the game and be able to click the End button to show results
-    /// </summary>
-    private void EndTheGame()
+
+        /// <summary>
+        /// This is used to end the game and be able to click the End button to show results
+        /// </summary>
+        private void EndTheGame()
         {
             lblPlayer1.Text = "Player 1 (PASS)";
             lblPlayer2.Text = "Player 2 (PASS)";
@@ -266,11 +258,11 @@ namespace Cards
             btnEnd.Focus();
         }
 
-       /// <summary>
-       /// Returns the value of the card drawn out
-       /// </summary>
-       /// <param name="card"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// Returns the value of the card drawn out
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
         public int ReturnValue(Card card)
         {
             FaceValue value = card.FaceValue;
@@ -338,14 +330,13 @@ namespace Cards
         #endregion
 
         private void Form1_Load(object sender, EventArgs e)
-        {         
+        {
             SetUp();
-
             //For identifying the buttons to click easier
             btnStart.Enabled = false;
             btnContinue.Enabled = false;
-            btnReset.Enabled = false;            
-          
+            btnReset.Enabled = false;
+
         }
         private void BtnStart_Click(object sender, EventArgs e)
         {
@@ -416,10 +407,10 @@ namespace Cards
                                    "choose the Reset button.";
 
                 //This is to begin the game with the back of the cards for every players
-                ShowBlankHand(Player1,13);         
-                ShowBlankHand(Player2,13);
-                ShowBlankHand(Player3,13); 
-                ShowBlankHand(Player4,13);
+                ShowBlankHand(Player1, 13);
+                ShowBlankHand(Player2, 13);
+                ShowBlankHand(Player3, 13);
+                ShowBlankHand(Player4, 13);
                 btnNewGame.Enabled = false;
                 btnStart.Enabled = true;
                 btnReset.Enabled = true;
@@ -431,14 +422,14 @@ namespace Cards
                 MessageBox.Show(ex.Message, "Error");
             }
         }
-    
+
 
         private void PictureBox_Click(object sender, EventArgs e)
         {
             try
             {
-                
-                
+
+
                 PictureBox picClicked = (PictureBox)sender;
                 int cardPlayer1 = Player1.Controls.IndexOf(picClicked);
                 int cardPlayer2 = Player2.Controls.IndexOf(picClicked);
@@ -450,14 +441,14 @@ namespace Cards
                     //To show the player has passed this turn
                     if (lblPlayer1.Text == "Player 1 (PASS)")
                     {
-                        MessageBox.Show("This player has passed this turn.", "Error!",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("This player has passed this turn.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-                    }                               
+                    }
 
                     //remove the card from the player's hand and put it into the DrawPlatform
                     Card drawnCard = hand1.RemoveCard((Card)picClicked.Tag);
                     DrawOutCard(drawnCard, hand1, Player1);
-                    
+
                 }
                 else if (cardPlayer2 != -1)
                 {
@@ -526,11 +517,11 @@ namespace Cards
                     lblPlayer4.Text = "Player 4";
                     if (FinishedPlayer(lblPlayer1))
                     {
-                        lblPlayer1.Text = "Player 1 (PASS)";                      
+                        lblPlayer1.Text = "Player 1 (PASS)";
                     }
                     if (FinishedPlayer(lblPlayer2))
                     {
-                        lblPlayer2.Text = "Player 2 (PASS)";                     
+                        lblPlayer2.Text = "Player 2 (PASS)";
                     }
                     if (FinishedPlayer(lblPlayer3))
                     {
@@ -581,10 +572,10 @@ namespace Cards
 
                 #region Code to make a player the third place
 
-                    #region Player 1
+                #region Player 1
                 // Player 1 - THIRD PLACE
 
-                 
+
                 if (ThirdPlace(hand1, lblPlayer2, lblPlayer3, hand4) ||  //Player 2 and 3 have won
                     ThirdPlace(hand1, lblPlayer2, lblPlayer4, hand3) ||  //Player 2 and 4 have won
                     ThirdPlace(hand1, lblPlayer3, lblPlayer4, hand2))    //Player 3 and 4 have won
@@ -595,14 +586,14 @@ namespace Cards
                     MakeAPlayerWin(Player1, lblPlayer1);
                     return;
                 }
-                    #endregion
+                #endregion
 
-                    #region Player 2
+                #region Player 2
                 // Player 2 - THIRD PLACE
 
-                
-                if (ThirdPlace(hand2, lblPlayer1, lblPlayer3, hand4)||  //Player 1 and 3 have won 
-                    ThirdPlace(hand2, lblPlayer3, lblPlayer4, hand1)||  //Player 3 and 4 have won
+
+                if (ThirdPlace(hand2, lblPlayer1, lblPlayer3, hand4) ||  //Player 1 and 3 have won 
+                    ThirdPlace(hand2, lblPlayer3, lblPlayer4, hand1) ||  //Player 3 and 4 have won
                     ThirdPlace(hand2, lblPlayer1, lblPlayer4, hand3))   //Player 1 and 4 have won
                 {
                     MessageBox.Show("Nice! You (Player 2) come at the third in this game", "THIRD PLACE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -613,10 +604,10 @@ namespace Cards
                 }
                 #endregion
 
-                    #region Player 3
-                    // Player 3 - THIRD PLACE
+                #region Player 3
+                // Player 3 - THIRD PLACE
 
-                if (ThirdPlace(hand3, lblPlayer1, lblPlayer2, hand4)||   //Player 1 and 2 have won 
+                if (ThirdPlace(hand3, lblPlayer1, lblPlayer2, hand4) ||   //Player 1 and 2 have won 
                     ThirdPlace(hand3, lblPlayer1, lblPlayer4, hand2) ||  //Player 1 and 4 have won
                     ThirdPlace(hand3, lblPlayer4, lblPlayer2, hand1))    //Player 2 and 4 have won
                 {
@@ -628,10 +619,10 @@ namespace Cards
                 }
                 #endregion
 
-                    #region Player 4
-                    // Player 4 - THIRD PLACE
+                #region Player 4
+                // Player 4 - THIRD PLACE
 
-                     
+
                 if (ThirdPlace(hand4, lblPlayer1, lblPlayer2, hand3) ||  //Player 1 and 2 have won
                     ThirdPlace(hand4, lblPlayer3, lblPlayer2, hand1) ||  //Player 2 and 3 have won 
                     ThirdPlace(hand4, lblPlayer1, lblPlayer3, hand2))    //Player 1 and 3 have won 
@@ -642,18 +633,18 @@ namespace Cards
                     MakeAPlayerWin(Player4, lblPlayer4);
                     return;
                 }
-                    #endregion
+                #endregion
 
                 #endregion
 
                 #region Code to make a player the second place
 
-                    #region Player 1
+                #region Player 1
                 //this is for making the player 1 the second place of the game
 
                 //Player 2 is the first place already
-                if (SecondPlace(hand1, lblPlayer2, hand3, hand4)||
-                    SecondPlace(hand1, lblPlayer3, hand2, hand4)||
+                if (SecondPlace(hand1, lblPlayer2, hand3, hand4) ||
+                    SecondPlace(hand1, lblPlayer3, hand2, hand4) ||
                     SecondPlace(hand1, lblPlayer4, hand2, hand3))
                 {
                     MessageBox.Show("Great! You (Player 1) come at the Second place of this game", "SECOND PLACE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -664,11 +655,11 @@ namespace Cards
                 }
                 #endregion
 
-                    #region Player 2
+                #region Player 2
 
-                    //Player 1 is the first place already
-                if (SecondPlace(hand2, lblPlayer1, hand3, hand4)||
-                    SecondPlace(hand2, lblPlayer3, hand1, hand4)||
+                //Player 1 is the first place already
+                if (SecondPlace(hand2, lblPlayer1, hand3, hand4) ||
+                    SecondPlace(hand2, lblPlayer3, hand1, hand4) ||
                     SecondPlace(hand2, lblPlayer4, hand1, hand3))
                 {
                     MessageBox.Show("Great! You (Player 2) come at the Second place of this game", "SECOND PLACE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -677,7 +668,7 @@ namespace Cards
                     MakeAPlayerWin(Player2, lblPlayer2);
                     return;
                 }
-                    //Player 3 is the first place already
+                //Player 3 is the first place already
                 if (SecondPlace(hand2, lblPlayer3, hand1, hand4))
                 {
                     MessageBox.Show("Great! You (Player 2) come at the Second place of this game", "SECOND PLACE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -686,7 +677,7 @@ namespace Cards
                     MakeAPlayerWin(Player2, lblPlayer2);
                     return;
                 }
-                    //Player 4 is the first place already
+                //Player 4 is the first place already
                 if (SecondPlace(hand2, lblPlayer4, hand1, hand3))
                 {
                     MessageBox.Show("Great! You (Player 2) come at the Second place of this game", "SECOND PLACE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -697,35 +688,35 @@ namespace Cards
                 }
                 #endregion
 
-                    #region Player 3
-                    //this is for making the player 3 the second place of the game
-                 if (SecondPlace(hand3, lblPlayer1, hand2, hand4)||
-                    (SecondPlace(hand3, lblPlayer2, hand1, hand4))||
-                    (SecondPlace(hand3, lblPlayer4, hand2, hand1)))
-                 {
+                #region Player 3
+                //this is for making the player 3 the second place of the game
+                if (SecondPlace(hand3, lblPlayer1, hand2, hand4) ||
+                   (SecondPlace(hand3, lblPlayer2, hand1, hand4)) ||
+                   (SecondPlace(hand3, lblPlayer4, hand2, hand1)))
+                {
                     MessageBox.Show("Great! You (Player 3) come at the Second place of this game", "SECOND PLACE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ranking += "Player 3 : SECOND PLACE (2nd).♦\r\n";
                     hand3 = winnerDeck.DealHand(2);
                     MakeAPlayerWin(Player3, lblPlayer3);
                     return;
-                 }
-                 
-                    #endregion
+                }
 
-                    #region Player 4
+                #endregion
+
+                #region Player 4
                 //this is for making the player 4 the second place of the game
- 
-                 if (SecondPlace(hand4, lblPlayer2, hand3, hand1) ||
-                    (SecondPlace(hand4, lblPlayer3, hand2, hand1))||
-                    (SecondPlace(hand4, lblPlayer1, hand2, hand3)))
-                 {
+
+                if (SecondPlace(hand4, lblPlayer2, hand3, hand1) ||
+                   (SecondPlace(hand4, lblPlayer3, hand2, hand1)) ||
+                   (SecondPlace(hand4, lblPlayer1, hand2, hand3)))
+                {
                     MessageBox.Show("Great! You (Player 4) come at the Second place of this game", "SECOND PLACE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ranking += "Player 4 : SECOND PLACE (2nd).♦\r\n";
                     hand4 = winnerDeck.DealHand(2);
                     MakeAPlayerWin(Player4, lblPlayer4);
                     return;
-                 }
-                
+                }
+
                 #endregion
 
                 #endregion
@@ -735,7 +726,7 @@ namespace Cards
                 if (Player1.Visible == false)
                 {
                     return;
-                   
+
                 }
                 else
                 {
@@ -748,7 +739,7 @@ namespace Cards
                         return;
                     }
                 }
-            
+
                 //This is for when the player 2 is the first place, make the panel player 2 invisible
                 if (Player2.Visible == false)
                 {
@@ -905,21 +896,21 @@ namespace Cards
             #region The player has to start a turn with the 3 spades to continue after clicking the Start button
             if (previousHand.Count == 0 && drawHand.Count == 0)
             {
-                MessageBox.Show("You have to start a new turn with combinations.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("You have to start a new turn with combinations.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             #endregion
 
             #region  The player has to draw out cards that are the same number as the previous one,
-            //Except for when there is a Two in the previous draw.
+
             if (previousHand.Count != drawHand.Count && previousHand.Count != 0 && drawHand.Count != 0 && isExamined == true)
             {
-                MessageBox.Show("You have to draw appropriate combinations.","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("You have to draw appropriate combinations.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
 
 
             }
-            
+
             #endregion
 
             //This is the code for each player's turn.
@@ -936,16 +927,16 @@ namespace Cards
 
                 #region This if here is used when the player 2 has won and prevent 2 from playing
                 if (FinishedPlayer(lblPlayer2))
-                {            
+                {
                     #region Execute when the player wants to pass.
                     if (drawHand.Count == 0)
                     {
-                        
+
                         lblPlayer1.Text = "Player 1 (PASS)";
                         Player2.Enabled = false;
                         lblPlayer2.Text = "Player 2 (PASS)";
                         Player3.Enabled = true;
-                        if(value == 0)
+                        if (value == 0)
                         {
                             //All these conditions are for when Player 2 has won with...
                             if (FinishedPlayer(lblPlayer3))  //with Player 3
@@ -964,7 +955,7 @@ namespace Cards
                             }
                             return;
                         }
-                       
+
                     }
                     #endregion
 
@@ -972,7 +963,7 @@ namespace Cards
                     //If the player draws out cards that are smaller than the previous one
                     if (value < oldValue)
                     {
-                        MessageBox.Show("You cannot play with these cards","Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("You cannot play with these cards", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     //All these conditions are for when Player 2 has won with...
@@ -1043,7 +1034,7 @@ namespace Cards
                         lblPlayer2.Text = "Player 2 (PASS)";
                         Player3.Enabled = false;
                         lblPlayer3.Text = "Player 3 (PASS)";
-                        if(value == 0)
+                        if (value == 0)
                         {
                             if (FinishedPlayer(lblPlayer4))
                             {
@@ -1061,7 +1052,7 @@ namespace Cards
                             }
                             return;
                         }
-                        
+
                     }
                     #endregion
 
@@ -1141,7 +1132,7 @@ namespace Cards
                         Player4.Enabled = false;
                         lblPlayer4.Text = "Player 4 (PASS)";
                         Player1.Enabled = true;
-                        if(value == 0)
+                        if (value == 0)
                         {
                             //All these conditions are for when Player 4 has won with...
                             if (FinishedPlayer(lblPlayer1))   //Player 1
@@ -1170,7 +1161,7 @@ namespace Cards
                         MessageBox.Show("You cannot play with these cards", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    
+
                     //All these conditions are for when Player 4 has won with...
                     if (FinishedPlayer(lblPlayer1))   //Player 1
                     {
@@ -1228,7 +1219,7 @@ namespace Cards
                     MessageBox.Show("You have to start a new turn with combinations before continue.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-#endregion
+                #endregion
 
                 #region This if here is used when the player 1 has won and prevent 1 from playing
                 if (FinishedPlayer(lblPlayer1))
@@ -1240,7 +1231,7 @@ namespace Cards
                         Player1.Enabled = false;
                         lblPlayer1.Text = "Player 1 (PASS)";
                         Player2.Enabled = true;
-                        if(value == 0)
+                        if (value == 0)
                         {
                             //All these conditions are for when Player 1 has won with...
                             if (FinishedPlayer(lblPlayer2)) //Player 2
@@ -1293,7 +1284,7 @@ namespace Cards
 
                 #region this else represents a turn of a player
                 else
-                {   
+                {
                     //this if is used to identify if the player want to pass this turn
                     if (drawHand.Count == 0)
                     {
@@ -1336,7 +1327,7 @@ namespace Cards
 
             DrawPlatform.Controls.Clear();
             isExamined = true;
-           
+
             #endregion
         }
         private void BtnReset_Click(object sender, EventArgs e)
@@ -1362,7 +1353,7 @@ namespace Cards
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("You want to escape the game so soon?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.No) 
+            if (dialogResult == DialogResult.No)
             {
                 e.Cancel = true;
             }
