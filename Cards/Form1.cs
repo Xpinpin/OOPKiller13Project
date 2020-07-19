@@ -63,6 +63,8 @@ namespace Cards
 
                 value = 0;
                 oldValue = 0;
+                
+                ranking = "";
 
                 ranking = "";
 
